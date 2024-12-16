@@ -1,6 +1,9 @@
 import { Project } from "./project";
 import { CounterTodo, TimedTodo, Todo } from "./todo";
-import { sampleProject1, sampleProject2 } from "./initial_project_sample/deafultOutput";
+import {
+  sampleProject1,
+  sampleProject2,
+} from "./initial_project_sample/deafultOutput";
 import { renderProjectList } from "./render_page/renderProjectList";
 
 // projectListArr to store all the projects
