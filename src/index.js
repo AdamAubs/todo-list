@@ -1,10 +1,12 @@
 import "./style/main.css";
-import { appLogic } from "./js/app";
 import loadInitialPage from "./js/app";
 
 console.log("Hello Webpack!");
-
-// appLogic(); // Run the app logic
+if (process.env.NODE_ENV !== "production") {
+  console.log("Looks like we are in development mode!");
+} else {
+  console.log("Looks like we are in production mode!");
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
@@ -21,5 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Page loaded");
 
   loadInitialPage();
-
 });

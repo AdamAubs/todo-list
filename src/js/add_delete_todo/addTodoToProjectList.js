@@ -1,4 +1,5 @@
 import { Todo } from "../todo";
+
 export function addTodoToProjectList(todo, contentDiv) {
   // Prints a Todo for the project
   // Create a new todo list container
