@@ -31,7 +31,7 @@
   border: none;
   cursor: pointer;
   padding: 10px;
-  box-shadow: 0 2px 5px #E8EDDF;
+  box-shadow: 0 2px 5px #e8eddf;
 }
 
 .nav-bar .hamburger span {
@@ -85,12 +85,49 @@
   background-color: #444;
 }
 
-/* Content area */
-#content {
-  margin-left: 250px; /* Sidebar width */
-  flex: 1;
-  padding: 20px;
-  transition: margin-left 0.3s ease;
+/* Project list */
+
+.nav-bar .addProjectBtn {
+  margin-top: 20px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  background-color: #333533;
+}
+
+.projectList {
+  display: flex; /* Or use flex for flexible alignment */
+  flex-direction: column; /* Stack projects vertically */
+  gap: 10px; /* Add spacing between items */
+  padding: 10px; /* Add some padding inside the container */
+  max-height: 80vh; /* Prevent overflow */
+  overflow-y: auto; /* Add scrolling if necessary */
+  width: 100%;
+}
+
+.projectList .project-item {
+  display: flex; /* Align content within a project item */
+  justify-content: space-between; /* Keep delete button aligned to the right */
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #333533;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+}
+
+.projectList .project-item:hover {
+  background-color: #242423;
+}
+
+.projectList .project-item .delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 
 @media screen and (max-width: 768px) {
@@ -115,7 +152,7 @@
 
   .nav-bar.open .addProjectBtn {
     margin-top: 20px;
-    padding: 20px 100px;
+    padding: 10px 40px;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
     background-color: #333533;
@@ -174,4 +211,137 @@
 }
 .nav-bar .projectList span {
   padding: 30px;
+}
+
+/* New Project Form */
+.new-project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between form groups */
+  width: 100%; /* Full width of the container */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Space between label and input */
+}
+
+label {
+  font-size: 14px;
+  color: #cfdbd5; /* Darker text for labels */
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff; /* Blue color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+button[type="submit"]:active {
+  background-color: #003f7f; /* Even darker when pressed */
+}
+
+/* Content Container */
+#content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; /* Space between grid items */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  margin: 20px auto;
+}
+
+/* Header within #content */
+#content h2 {
+  grid-column: 1 / -1; /* Span the full width of the grid */
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Add Todo Button */
+.add-todo-btn {
+  grid-column: 1 / -1; /* Full width */
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-todo-btn:hover {
+  background-color: #0056b3;
+}
+
+.add-todo-btn:active {
+  background-color: #003f7f;
+}
+
+/* Individual Cards (Dynamically Created Content) */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+.project-card button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  color: white;
+  background-color: #e63946;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.project-card button:hover {
+  background-color: #c12f39;
 }

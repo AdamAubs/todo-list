@@ -181,7 +181,8 @@ function addProjectToList(projectListDiv, index) {
 function printTodo(todo, contentDiv) {
   // Create a new todo list container
   const todoItem = document.createElement("div");
-  const todoTitle = document.createElement("h4");
+  todoItem.classList.add("project-card");
+  const todoTitle = document.createElement("h3");
 
   // Add the description
   const todoDescription = document.createElement("p");
@@ -190,7 +191,7 @@ function printTodo(todo, contentDiv) {
   const todoDueDate = document.createElement("p");
 
   // Add the priority
-  const todoPriority = document.createElement("h4");
+  const todoPriority = document.createElement("p");
 
   // Add the notes
   const todoNotes = document.createElement("p");
