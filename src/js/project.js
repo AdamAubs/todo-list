@@ -1,5 +1,4 @@
 import { Todo } from "./todo.js";
-import { logAddTodoListError } from "./logger.js";
 
 export class Project {
   constructor(title, date) {
