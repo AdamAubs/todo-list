@@ -1,4 +1,4 @@
-import "./style/sample.css";
+import "./style/main.css";
 import { appLogic } from "./js/app";
 import loadInitialPage from "./js/app";
 

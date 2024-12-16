@@ -1,0 +1,177 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styling for the navbar */
+.nav-bar {
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.nav-bar .hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* space between lines */
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  box-shadow: 0 2px 5px #E8EDDF;
+}
+
+.nav-bar .hamburger span {
+  width: 60px;
+  height: 4px;
+  background-color: #f5cb5c;
+  border-radius: 2px; /* Slight rounding for a smoother look */
+  transition: all 0.3s ease; /* Add transition for animations */
+}
+
+.nav-bar.open .hamburger span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.nav-bar.open .hamburger span:nth-child(2) {
+  opacity: 0; /* Hide the middle line */
+}
+
+.nav-bar.open .hamburger span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.nav-bar.open {
+  transform: translateX(-120px);
+}
+
+.nav-bar.open .hamburger {
+  background-color: #242423;
+}
+
+/* Hide the menu by default in mobile view */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nav-menu button:hover {
+  background-color: #444;
+}
+
+/* Content area */
+#content {
+  margin-left: 250px; /* Sidebar width */
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  /* Navbar styling for smaller screens */
+  .nav-bar {
+    display: flex;
+    flex-direction: column; /* Align navbar items in a row */
+    width: 70%;
+    align-items: center;
+    padding: 0 15px; /* Add horizontal padding */
+    background-color: #333;
+    transform: translateX(-300px);
+  }
+
+  .nav-bar.open {
+    transform: translateX(0px);
+  }
+
+  .nav-bar .hamburger {
+    transform: translateX(160px);
+  }
+
+  .nav-bar.open .addProjectBtn {
+    margin-top: 20px;
+    padding: 20px 100px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+    background-color: #333533;
+  }
+
+  .nav-bar.open .addProjectBtn:hover {
+    background-color: #242423;
+  }
+
+  .projectList {
+    display: flex; /* Or use flex for flexible alignment */
+    flex-direction: column; /* Stack projects vertically */
+    gap: 10px; /* Add spacing between items */
+    padding: 10px; /* Add some padding inside the container */
+    max-height: 80vh; /* Prevent overflow */
+    overflow-y: auto; /* Add scrolling if necessary */
+    width: 100%;
+  }
+
+  .projectList .project-item {
+    display: flex; /* Align content within a project item */
+    justify-content: space-between; /* Keep delete button aligned to the right */
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #333533;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  }
+
+  .projectList .project-item:hover {
+    background-color: #242423;
+  }
+
+  .projectList .project-item .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-bar.open .hamburger {
+    transform: translateX(30px);
+  }
+
+  /* Open the mobile friendly Navbar */
+}
+
+.nav-bar .projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.nav-bar .projectList span {
+  padding: 30px;
+}

@@ -2,8 +2,9 @@ import { Todo } from "./todo.js";
 import { logAddTodoListError } from "./logger.js";
 
 export class Project {
-  constructor(title) {
+  constructor(title, date) {
     this.title = title;
+    this.date = date;
     this.todoList = [];
   }
 
