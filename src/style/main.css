@@ -18,6 +18,7 @@
   top: 0;
   left: 0;
   transition: transform 0.3s ease;
+  z-index: 1;
 }
 
 .nav-bar .hamburger {
@@ -200,8 +201,6 @@
   .nav-bar.open .hamburger {
     transform: translateX(30px);
   }
-
-  /* Open the mobile friendly Navbar */
 }
 
 .nav-bar .projectList {
@@ -268,6 +267,7 @@ button[type="submit"]:active {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px; /* Space between grid items */
   padding: 20px;
+
   background-color: #f9f9f9; /* Light background for contrast */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -308,6 +308,8 @@ button[type="submit"]:active {
 /* Individual Cards (Dynamically Created Content) */
 .project-card {
   display: flex;
+  position: relative;
+  z-index: 0;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -344,4 +346,174 @@ button[type="submit"]:active {
 
 .project-card button:hover {
   background-color: #c12f39;
+}
+
+/* Style the delete button as an "X" button */
+.deleteTodoBtn {
+  position: absolute; /* Positioned relative to the parent */
+  top: 8px; /* Distance from the top */
+  left: 8px; /* Distance from the left */
+  width: 32px; /* Width of the button */
+  height: 32px; /* Height of the button */
+  background-color: #ff4d4d; /* Red background */
+  color: #ffffff; /* White "X" */
+  font-size: 1.2rem; /* Slightly larger font for "X" */
+  font-weight: bold;
+  border: none; /* Remove default border */
+  border-radius: 50%; /* Makes the button circular */
+  display: flex; /* Flexbox to center the text */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Add hover and active effects */
+.deleteTodoBtn:hover {
+  background-color: #cc0000; /* Darker red on hover */
+  transform: scale(1.1); /* Slight enlargement */
+}
+
+.deleteTodoBtn:active {
+  transform: scale(1); /* Subtle shrink back on click */
+}
+
+/* Container styling for the timer */
+.timerDiv {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 1rem; /* Spacing between grid items */
+
+  justify-items: center; /* Horizontally center items */
+  padding: 1rem;
+  border: 1px solid #f5cb5c; /* Optional border */
+  border-radius: 8px;
+  background-color: #242423;
+  max-width: 100%; /* Adjust width as needed */
+  margin: 1rem auto; /* Center the container horizontally */
+}
+
+/* Timer display text */
+.timerDiv .timer-display {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e8eddf;
+  grid-column: span 3; /* Make the timer display span across all columns */
+  text-align: left;
+}
+
+/* Timer buttons styling */
+.start-timer-btn,
+.stop-timer-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #956624; /* Primary blue for start button */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  grid-column: span 2;
+}
+
+.start-timer-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.stop-timer-btn {
+  background-color: #dc3545; /* Red for stop button */
+}
+
+.stop-timer-btn:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+/* Container styling for the counter */
+.stackDiv {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  gap: 1rem; /* Spacing between grid items */
+
+  justify-items: center; /* Horizontally center items */
+  align-items: center; /* Vertically center items */
+  padding: 1rem;
+  border: 1px solid #f5cb5c; /* Optional border */
+  border-radius: 8px;
+  background-color: #242423;
+  max-width: 600px; /* Adjust width as needed */
+  margin: 1rem auto; /* Center the container horizontally */
+}
+
+/* Counter display text */
+.stackDiv .stack-display {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e8eddf;
+  grid-column: span 2; /* Make the display span across all columns */
+  text-align: center; /* Center the text */
+}
+
+/* Counter buttons styling */
+.increment-btn,
+.remove-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff; /* Primary blue for Add button */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: center; /* Center text inside buttons */
+}
+
+.increment-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.remove-btn {
+  background-color: #dc3545;
+}
+
+/* Progress bar container */
+.progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #f5cb5c;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  grid-column: span 2; /* Span across both grid columns */
+  overflow: hidden;
+}
+
+/* Progress bar itself */
+.progress-container .progress-bar {
+  width: 10%; /* Starting width */
+  height: 100%;
+  background-color: limegreen;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Button Styling */
+.add-todo-btn {
+  width: 80%; /* Take up 80% of the container width */
+  max-width: 400px; /* Set a max width for readability */
+  padding: 1rem; /* Padding for better click area */
+  text-align: center; /* Center the button text */
+  background-color: #007bff; /* Primary blue background */
+  color: #ffffff; /* White text color */
+  font-size: 1.2rem; /* Increase font size */
+  font-weight: bold;
+  border: none; /* Remove default borders */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover and Active States */
+.add-todo-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.add-todo-btn:active {
+  transform: scale(0.98); /* Slight shrink effect on click */
 }

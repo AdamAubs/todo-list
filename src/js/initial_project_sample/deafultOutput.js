@@ -16,7 +16,7 @@ const timedTodo = new TimedTodo(
   "TimedTodo title1",
   "TimedTodo description1",
   "High1",
-  20
+  1
 );
 
 const counterTodo = new CounterTodo(
