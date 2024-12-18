@@ -1,6 +1,9 @@
 import { projectListArr } from "../app";
 import { addTodoToProjectList } from "../add_delete_todo/addTodoToProjectList";
-import { createFormInput } from "../form_input_helper/createFormInput";
+import {
+  createFormInput,
+  createRadioFormInput,
+} from "../form_input_helper/createFormInput";
 import { Todo, TimedTodo, CounterTodo } from "../todo";
 
 // Prints the projects todo list title
@@ -95,9 +98,9 @@ function addTodoToProject(contentDiv, index) {
   const dueDateInput = createFormInput("Due Date", "date");
   form.appendChild(dueDateInput);
 
-  // Add a priority input
-  const priorityInput = createFormInput("Priority", "text");
-  form.appendChild(priorityInput);
+  // Add a priority input (with a radio button) PUT INTO SEPARATE FUNCTION
+  const priorityGroup = createRadioFormInput("Priority");
+  form.appendChild(priorityGroup);
 
   // Add a notes input
   const notesInput = createFormInput("Notes", "textarea");
@@ -114,11 +117,24 @@ function addTodoToProject(contentDiv, index) {
     e.preventDefault();
 
     // Get the values from the form inputs
-    const title = titleInput.querySelector("input").value;
-    const description = descriptionInput.querySelector("input").value;
-    const dueDate = dueDateInput.querySelector("input").value;
-    const priority = priorityInput.querySelector("input").value;
-    const notes = notesInput.querySelector("textarea").value;
+    const title = titleInput.querySelector("input")?.value.trim() || "Untitled";
+    const description =
+      descriptionInput.querySelector("input")?.value.trim() ||
+      "Empty description";
+    const dueDate = dueDateInput.querySelector("input").value.trim();
+
+    // Radio button Priority
+    const priority =
+      form.querySelector('input[name="priority"]:checked')?.value || "#BFE799"; // Default to 'green'
+    console.log(priority);
+
+    const notes = notesInput.querySelector("textarea").value.trim();
+
+    // Validate input
+    if (!title) {
+      alert("Title cannot be empty");
+      return;
+    }
 
     // Create a new Todo instance
     const newTodo = new Todo(
@@ -162,12 +178,15 @@ function addTimeTodoToProject(contentDiv, index) {
   const descriptionInput = createFormInput("Description", "text");
   form.appendChild(descriptionInput);
 
-  // Add a priority input
-  const priorityInput = createFormInput("Priority", "text");
-  form.appendChild(priorityInput);
+  // Add a priority input with radio buttons (green, yellow, red)
+  const priorityGroup = createRadioFormInput("Priority");
+  form.appendChild(priorityGroup);
 
-  // Add a priority input
-  const startTimeInput = createFormInput("Timer Start Time", "number");
+  // Add what time the timer should start
+  const startTimeInput = createFormInput(
+    "\u23F0 Add The Minutes For Timer",
+    "number"
+  );
   form.appendChild(startTimeInput);
 
   // Add submit button
@@ -183,14 +202,16 @@ function addTimeTodoToProject(contentDiv, index) {
     // Get the values from the form inputs
     const title = titleInput.querySelector("input").value;
     const description = descriptionInput.querySelector("input").value;
-    const priority = priorityInput.querySelector("input").value;
+    // Radio button Priority
+    const priority =
+      form.querySelector('input[name="priority"]:checked')?.value || "#BFE799"; // Default to 'green'
+    console.log(priority);
     const duration = startTimeInput.querySelector("input").value;
 
     // Create a new Todo instance
     const newTimeTodo = new TimedTodo(title, description, priority, duration);
 
     // Get the project index from the currently displayed project
-    // const currentProjectIndex = parseInt(contentDiv.dataset.currentProject, 10);
     const currentProject = projectListArr[index];
 
     // Add the new Todo to the project
@@ -221,12 +242,15 @@ function addCounterTodoToProject(contentDiv, index) {
   const descriptionInput = createFormInput("Description", "text");
   form.appendChild(descriptionInput);
 
-  // Add a priority input
-  const priorityInput = createFormInput("Priority", "text");
-  form.appendChild(priorityInput);
+  // Add a priority input with radio buttons (green, yellow, red)
+  const priorityGroup = createRadioFormInput("Priority");
+  form.appendChild(priorityGroup);
 
   // Add a priority input
-  const maxCountInput = createFormInput("Max Count", "number");
+  const maxCountInput = createFormInput(
+    "🔢 Add the count amount you want to reach",
+    "number"
+  );
   form.appendChild(maxCountInput);
 
   // Add submit button
@@ -242,7 +266,10 @@ function addCounterTodoToProject(contentDiv, index) {
     // Get the values from the form inputs
     const title = titleInput.querySelector("input").value;
     const description = descriptionInput.querySelector("input").value;
-    const priority = priorityInput.querySelector("input").value;
+    // Radio button Priority
+    const priority =
+      form.querySelector('input[name="priority"]:checked')?.value || "#BFE799"; // Default to 'green'
+    console.log(priority);
     const maxCount = maxCountInput.querySelector("input").value;
 
     // Create a new Todo instance

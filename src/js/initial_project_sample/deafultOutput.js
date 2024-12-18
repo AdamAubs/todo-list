@@ -4,29 +4,29 @@ import { Todo, TimedTodo, CounterTodo } from "../todo";
 // Create project 1
 const myProject = new Project("Project 1");
 
+// Sample todo object
 const regularTodo = new Todo(
-  "todo title1",
-  "todo description1",
-  "todo date1",
-  "todo priority1",
-  "Todo notes1"
+  "todo title1", // Example Title
+  "todo description1", // Example description
+  "2/20/1900", // Example color for priority
+  "#F3F087"
 );
-
+// Sample timed todo object
 const timedTodo = new TimedTodo(
   "TimedTodo title1",
   "TimedTodo description1",
-  "High1",
+  "#F3F087",
   1
 );
-
+// Sample counter todo object
 const counterTodo = new CounterTodo(
   "CountTodo title1",
   "CountTodo description1",
-  "Low1",
-  8
+  "#E4B5A7",
+  5
 );
 
-// // Add todos to the project 1
+// Add todos to the project 1
 myProject.addTodo(regularTodo);
 myProject.addTodo(timedTodo);
 myProject.addTodo(counterTodo);

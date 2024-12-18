@@ -8,11 +8,17 @@ import {
 } from "date-fns";
 
 export class Todo {
-  constructor(title, description, dueDate, priority, notes) {
+  constructor(
+    title = "",
+    description = "",
+    dueDate = "",
+    priority = "",
+    notes = ""
+  ) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
-    this.priority = priority;
+    this.priority = priority; // "green", "yellow", or "red"
     this.notes = notes;
     this.completed = false;
   }
@@ -103,7 +109,6 @@ class TimedBehavior {
   }
 
   formatRemainingTime(duration) {
-    console.log(duration);
     const { hours, minutes, seconds } = duration;
     return `${hours || 0}h ${minutes || 0}m ${seconds || 0}s`;
   }
@@ -180,7 +185,7 @@ export class TimedTodo {
 
 export class CounterTodo {
   constructor(title, description, priority, maxCount) {
-    this.todo = new Todo(title, description, priority);
+    this.todo = new Todo(title, description, null, priority, "");
     this.counterBehavior = new CounterBehavior(maxCount);
   }
 
