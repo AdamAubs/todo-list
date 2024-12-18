@@ -223,7 +223,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Space between label and input */
+  gap: 10px; /* Space between label and input */
 }
 
 label {
@@ -242,6 +242,7 @@ input[type="date"] {
 }
 
 button[type="submit"] {
+  margin-top: 10px;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;

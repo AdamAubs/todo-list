@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve --config webpack.dev.js",
+    "switch-gh-pages": "git checkout gh-pages",
+    "merge-main": "git merge main --no-edit",
+    "prepare-dist": "npm run build && git add dist -f",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
