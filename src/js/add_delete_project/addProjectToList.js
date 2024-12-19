@@ -2,6 +2,7 @@ import { Project } from "../project";
 import { projectListArr } from "../app";
 import { renderProjectList } from "../render_page/renderProjectList";
 import { createFormInput } from "../form_input_helper/createFormInput";
+import { saveToLocalStorage } from "../localStorage/localStorageHelper";
 
 export function addProjectToList(projectListDiv, index) {
   // Clear the current content
@@ -38,6 +39,9 @@ export function addProjectToList(projectListDiv, index) {
 
     // Add the new project to the list
     projectListArr.push(newProject);
+
+    // Save the updated project list to localStorage
+    saveToLocalStorage(projectListArr);
 
     // Reopen the project to show the updated todo list
     renderProjectList();

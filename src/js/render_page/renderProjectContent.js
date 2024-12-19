@@ -5,6 +5,7 @@ import {
   createRadioFormInput,
 } from "../form_input_helper/createFormInput";
 import { Todo, TimedTodo, CounterTodo } from "../todo";
+import { saveToLocalStorage } from "../localStorage/localStorageHelper";
 
 // Prints the projects todo list title
 function printProjectTitle(contentDiv, index) {
@@ -153,6 +154,9 @@ function addTodoToProject(contentDiv, index) {
     // Add the new Todo to the project
     currentProject.addTodo(newTodo);
 
+    // Save the todos list array to localStorage after adding the Todo
+    saveToLocalStorage(projectListArr);
+
     // Reopen the project to show the updated todo list
     renderProjectContent(index);
   });
@@ -216,6 +220,9 @@ function addTimeTodoToProject(contentDiv, index) {
 
     // Add the new Todo to the project
     currentProject.addTodo(newTimeTodo);
+
+    // Save the todos list array to localStorage after adding the Todo
+    saveToLocalStorage(projectListArr);
 
     // Reopen the project to show the updated todo list
     renderProjectContent(index);
@@ -286,6 +293,9 @@ function addCounterTodoToProject(contentDiv, index) {
 
     // Add the new Todo to the project
     currentProject.addTodo(newCounterTodo);
+
+    // Save the todos list array to localStorage after adding the Todo
+    saveToLocalStorage(projectListArr);
 
     // Reopen the project to show the updated todo list
     renderProjectContent(index);

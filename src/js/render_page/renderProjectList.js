@@ -2,6 +2,7 @@ import { renderProjectContent } from "./renderProjectContent";
 import { projectListArr } from "../app";
 import { deleteProject } from "../add_delete_project/deleteProject";
 import { addProjectToList } from "../add_delete_project/addProjectToList";
+import { saveToLocalStorage } from "../localStorage/localStorageHelper";
 
 // Side bar project list
 export function renderProjectList() {
@@ -40,6 +41,9 @@ export function renderProjectList() {
         deleteProject(index);
         renderProjects(); // Re-render after deletion
         history.pushState(null, "", ""); // Update the state after deleting
+
+        // Save to localStorage after deletion
+        saveToLocalStorage(projectListArr);
       });
 
       // Append title and button to the project div
@@ -47,6 +51,9 @@ export function renderProjectList() {
       projectDiv.appendChild(deleteBtn);
       projectListDiv.appendChild(projectDiv);
     });
+
+    // Save to localStorage after rendering
+    saveToLocalStorage(projectListArr);
   }
 
   // Initially render the project list

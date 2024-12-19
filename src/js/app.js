@@ -8,11 +8,20 @@ import { renderProjectList } from "./render_page/renderProjectList";
 import { renderProjectContent } from "./render_page/renderProjectContent";
 import response from "./localStorage/localStorageCheck";
 
+import {
+  saveToLocalStorage,
+  loadFromLocalStorage,
+} from "./localStorage/localStorageHelper";
+
 // projectListArr to store all the projects
-export const projectListArr = [];
+// export const projectListArr = [];
+export const projectListArr = loadFromLocalStorage();
+
 // Adds sample todos to list
-projectListArr.push(sampleProject1);
-projectListArr.push(sampleProject2);
+// projectListArr.push(sampleProject1);
+// projectListArr.push(sampleProject2);
+
+saveToLocalStorage(projectListArr);
 console.log(projectListArr);
 
 // Check if the browser supports localStorage

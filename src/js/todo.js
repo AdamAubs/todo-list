@@ -6,6 +6,8 @@ import {
   format,
   intervalToDuration,
 } from "date-fns";
+import { v4 as uuidv4 } from "uuid";
+import { savePeriodicUpdate } from "./localStorage/localStorageHelper";
 
 export class Todo {
   constructor(
@@ -15,6 +17,7 @@ export class Todo {
     priority = "",
     notes = ""
   ) {
+    this.uuid = uuidv4(); // Generate a unique indetifier
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -47,7 +50,7 @@ class TimedBehavior {
   }
 
   // Start or Resume the Timer
-  startTimer(callback) {
+  startTimer(callback, saveDataCallback) {
     if (this.intervalId) return; // Prevent multiple intervals from being created
 
     if (!this.isPaused) {
@@ -156,6 +159,13 @@ export class TimedTodo {
     this.timedBehavior = new TimedBehavior(duration);
   }
 
+  saveData() {
+    console.log("Saving data: ", {
+      title: this.todo.title,
+      remainingSeconds: this.timedBehavior.remainingSeconds,
+    });
+  }
+
   // Get the formatted initial time
   getInitialTime() {
     const hours = Math.floor(this.timedBehavior.remainingSeconds / 3600);
@@ -167,9 +177,12 @@ export class TimedTodo {
   }
 
   startTimer(updateUI) {
-    this.timedBehavior.startTimer((timeLeft) => {
-      updateUI(timeLeft); // Pass the remaining time to the UI
-    });
+    this.timedBehavior.startTimer(
+      (timeLeft) => {
+        updateUI(timeLeft); // Pass the remaining time to the UI
+      },
+      () => this.saveData() // Save data callback
+    );
   }
 
   stopTimer() {
